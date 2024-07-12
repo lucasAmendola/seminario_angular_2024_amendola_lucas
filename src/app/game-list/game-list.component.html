@@ -1,0 +1,56 @@
+<div class="listContent">
+    <h1>Top sellers</h1>
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Genre</th>
+                <th>Price</th>
+                <th>Playability</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (game of games; track game.name){
+                <tr [class]="{'offer': game.offer}">
+                    <td><img class="img-thumbnail poster" [src]="game.image" alt="game.name"></td>
+                    <td style="width: 35%;">
+                        <h4>{{ game.name }}</h4>
+                        <p style="text-align: justify; font-size: small;">{{game.description}}</p>
+                    </td>
+                    <td><h5>{{ game.genre }}</h5></td>
+                    @if(game.offer){
+                        <td><h5>Before: {{ game.price | currency}}</h5>  
+                            <h3 style="font-weight: bold; color: rgb(210, 158, 0);">Now: {{ game.price/3 | currency}}</h3>
+                        </td>
+                    }
+                    @else{
+                        <td style="font-weight: bold;"><h5>{{ game.price | currency}}</h5></td>
+                    }                    
+                    <td style="font-weight: bolder;">
+                        <img style="max-width: 35px;" [src]="game.jugability" alt="game.name">
+                        @if(game.jugability2 != ''){
+                            <h6>-</h6>
+                            <img style="max-width: 35px;" [src]="game.jugability2" alt="game.name">
+                        }
+                    </td>
+                    <td>
+                        <div class="buttons-container">
+                            <app-button-discount [(quantity)]="game.quantity"></app-button-discount>
+                            @if(game.quantity > 0){
+                                <button (click)="addToCart(game)" class="comprarButton  input-group btn btn-primary btn-sm">
+                                    BUY
+                                </button>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            } @empty {
+                <tr>
+                    <td colspan="4">Sin juegos momentaneamente.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

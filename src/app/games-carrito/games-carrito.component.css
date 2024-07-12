@@ -1,0 +1,34 @@
+.carritoContent{
+    background-color: rgb(35, 35, 35);
+    width: 50%;
+    display: flex;
+    margin-left: 50%;
+}
+
+h6{
+    color: aquamarine;
+}
+
+.carritoBack{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: aliceblue;
+    margin: 15px;
+    background-color: rgb(121, 121, 121);
+    width: 100%;
+}
+.headerCart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: aliceblue;
+    justify-content: center;
+    height: 78px;
+    width: 100%;
+    background-color: #000;
+}
+
+.carritoList{
+    margin-top: 11px;
+}
